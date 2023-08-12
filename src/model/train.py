@@ -18,7 +18,7 @@ def main(args):
     df = get_csvs_df(args.training_data)
 
     # split data
-    X_train, X_test, y_train, y_test = split_data(df)
+    X_train, X_test, y_train, y_test = split_data(df, args.target_col)
 
     # train model
     train_model(args.reg_rate, X_train, X_test, y_train, y_test)
@@ -33,7 +33,19 @@ def get_csvs_df(path):
     return pd.concat((pd.read_csv(f) for f in csv_files), sort=False)
 
 
-# TO DO: add function to split data
+def split_data(df : pd.DataFrame, target_col: str, test_size=0.2):
+
+    train_sample = df.sample(frac=1-test_size, random_state=42) # Always use random_state=42 for reproducibility
+    test_sample = df.drop(train_sample.index)
+
+    # TO DO: return X_train, X_test, y_train, y_test
+
+    X_train = train_sample.drop(columns=[target_col])
+    X_test = test_sample.drop(columns=[target_col])
+    y_train = train_sample[target_col]
+    y_test = test_sample[target_col]
+
+    return X_train, X_test, y_train, y_test
 
 
 def train_model(reg_rate, X_train, X_test, y_train, y_test):
@@ -50,6 +62,8 @@ def parse_args():
                         type=str)
     parser.add_argument("--reg_rate", dest='reg_rate',
                         type=float, default=0.01)
+    parser.add_argument("--target_col", dest='target_col',
+                        type=str)
 
     # parse args
     args = parser.parse_args()

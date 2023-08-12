@@ -127,3 +127,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+# Ignore all but the requirements.txt file in the mlops-env directory
+mlops-env/*
+!mlops-env/requirements.txt
