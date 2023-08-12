@@ -15,5 +15,5 @@ jobs:
       uses: azure/login@v1
       with:
         creds: ${{secrets.AZURE_CREDENTIALS}}
-
-
+    - name: Running diabetes training model phase
+      run: az ml job create -g rg-dp100-labs -w mlw-dp100-labs -f ./src/job.yml -n diab-train-actions-job
