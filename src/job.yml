@@ -10,6 +10,6 @@ inputs:
     path: azureml://subscriptions/860f94f9-3790-4e05-923f-12728796f2ec/resourcegroups/rg-dp100-labs/workspaces/mlw-dp100-labs/datastores/workspaceblobstore/paths/LocalUpload/ff469ba855467299203a8f860ea1bd33/data/
   reg_rate: 0.01
 environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
-compute: azureml:ci0344
+compute: azureml:aml-cluster
 experiment_name: diabetes-train-experiment
 description: Training of an ML model to recognize the presence of diabetes in an individual
