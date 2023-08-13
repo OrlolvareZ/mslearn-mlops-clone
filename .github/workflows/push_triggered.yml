@@ -1,4 +1,4 @@
-name: Pull-based trigger of a workflow
+name: Push-based trigger of a workflow
 
 on:
   pull_request:
