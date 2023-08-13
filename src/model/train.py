@@ -38,8 +38,6 @@ def split_data(df : pd.DataFrame, target_col: str, test_size=0.2):
     train_sample = df.sample(frac=1-test_size, random_state=42) # Always use random_state=42 for reproducibility
     test_sample = df.drop(train_sample.index)
 
-    # TO DO: return X_train, X_test, y_train, y_test
-
     X_train = train_sample.drop(columns=[target_col])
     X_test = test_sample.drop(columns=[target_col])
     y_train = train_sample[target_col]
