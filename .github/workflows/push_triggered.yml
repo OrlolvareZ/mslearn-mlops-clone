@@ -1,7 +1,7 @@
 name: Push-based trigger of a workflow
 
 on:
-  pull_request:
+  push:
 
 jobs:
   train:
