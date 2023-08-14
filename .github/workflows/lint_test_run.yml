@@ -9,17 +9,19 @@ jobs:
         steps:
             - uses: actions/checkout@v2
             - name: Set up Python 3.8
-              uses: actions/setup-python@v3
+              uses: actions/setup-python@v2
               with:
                   python-version: 3.8
             - name: Install dependencies
               run: |
-                python -m pip install --upgrade pip |
-                pip install -r requirements.txt |
-                python -m pip install flake8 pytest
+                python -c "import certifi; print(certifi.where())" | read -r cert_path
+                python -m pip install --upgrade pip --cert "$cert_path" |
+                pip install -r requirements.txt --cert "$cert_path" |
+                python -m pip install flake8 pytest --cert "$cert_path"
             - name: Lint with flake8
               run: |
                   flake8 ./src/model/
             - name: Test with pytest
               run: |
-                  pytest ./tests/
+                  pytest ./src/model/
+
