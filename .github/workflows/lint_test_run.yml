@@ -16,7 +16,7 @@ jobs:
               run: |
                 pip install -r requirements.txt |
                 python -m pip install flake8 |
-                python -m pip install pytest=6.2.5 --force-reinstall
+                python -m pip install -v="pytest==6.2.5" --force-reinstall
             - name: Lint with flake8
               run: |
                 flake8 ./src/model/
