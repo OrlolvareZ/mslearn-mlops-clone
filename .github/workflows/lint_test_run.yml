@@ -14,6 +14,7 @@ jobs:
                   python-version: 3.8
             - name: Install dependencies
               run: |
+                pip install certifi |
                 python -c "import certifi; print(certifi.where())" | read -r cert_path
                 python -m pip install --upgrade pip --cert "$cert_path" |
                 pip install -r requirements.txt --cert "$cert_path" |
@@ -24,4 +25,3 @@ jobs:
             - name: Test with pytest
               run: |
                   pytest ./tests/
-
