@@ -22,4 +22,4 @@ jobs:
                   flake8 ./src/model/
             - name: Test with pytest
               run: |
-                  pytest ./src/model/
+                  pytest ./tests/
