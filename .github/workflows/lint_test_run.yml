@@ -14,15 +14,16 @@ jobs:
                   python-version: 3.8
             - name: Install dependencies
               run: |
-                python -m venv ./mlops-env |
-                source ./mlops-env/bin/activate  |
-                pip install -r requirements.txt |
-                python -m pip install flake8 pytest
+                  python -m venv ./mlops-env |
+                  source ./mlops-env/bin/activate |
+                  pip install -r requirements.txt |
+                  python -m pip install flake8 pytest
             - name: Checking dependencies are installed
               run: pip list
             - name: Lint with flake8
               run: |
-                flake8 ./src/model/
+                  flake8 ./src/model/
             - name: Test with pytest
               run: |
+                  source ./mlops-env/bin/activate |
                   pytest ./tests/
