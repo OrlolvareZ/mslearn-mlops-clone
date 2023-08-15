@@ -14,10 +14,10 @@ jobs:
                   python-version: 3.8
             - name: Install dependencies
               run: |
+                python -m venv ./mlops-env
                 pip install -r requirements.txt |
-                python -m pip install flake8 pytest |
-                pip install pandas
-            - name: Checking pandas is installed
+                python -m pip install flake8 pytest
+            - name: Checking dependencies are installed
               run: pip list
             - name: Lint with flake8
               run: |
