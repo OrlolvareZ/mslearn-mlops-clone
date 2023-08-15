@@ -7,7 +7,7 @@ command: >-
 inputs:
   training_data: 
     type: uri_folder 
-    path: azureml://subscriptions/860f94f9-3790-4e05-923f-12728796f2ec/resourcegroups/rg-dp100-labs/workspaces/mlw-dp100-labs/datastores/workspaceblobstore/paths/LocalUpload/ff469ba855467299203a8f860ea1bd33/data/
+    path: /subscriptions/860f94f9-3790-4e05-923f-12728796f2ec/resourceGroups/rg-dp100-labs/providers/Microsoft.MachineLearningServices/workspaces/mlw-dp100-labs/data/diabetes-dev-folder/versions/1
   reg_rate: 0.01
 environment: azureml:AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest
 compute: azureml:aml-cluster
