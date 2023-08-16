@@ -1,0 +1,20 @@
+name: Diabetes classification model deployment
+
+on:
+    workflow_dispatch:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@main
+            - name: Install az ml extension
+              run: az extension add -n ml -y
+            - name: Azure login
+              uses: azure/login@v1
+              with:
+                creds: ${{secrets.AZURE_CREDENTIALS}}
+            - name: Create endpoint for model deployment
+              run: az ml online-endpoint create --name diabetes-mlflow -f ./production/deploy1.yml -w mlw-dp100-labs -g rg-dp100-labs
+            - name: Deploy model to endpoint
+              run: az ml online-deployment create --name diabclass --endpoint diabetes-mlflow -f ./production/deploy2.yml --all-traffic -w mlw-dp100-labs -g rg-dp100-labs
