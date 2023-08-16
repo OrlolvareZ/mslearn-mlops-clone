@@ -1,0 +1,6 @@
+$schema: https://azuremlschemas.azureedge.net/latest/managedOnlineDeployment.schema.json
+name: diabclass
+endpoint_name: diabclass
+model: azureml:diab_classif:1
+instance_type: Standard_DS3_v2
+instance_count: 1
